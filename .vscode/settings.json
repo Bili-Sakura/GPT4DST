@@ -2,5 +2,9 @@
   "pylint.args": [
     "--disable=C0111" // 例如，禁用缺少函数docstring的警告
     // 在这里添加其他Pylint参数
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
 }
