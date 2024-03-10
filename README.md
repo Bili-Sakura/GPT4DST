@@ -1,2 +1,13 @@
-# GPT4DST
-GPT4DST是一个基于langchain库调用OpenAI的GPT闭源模型的LLM二次开发应用。该项目旨在为DST（饥荒联机版）游戏提供智能互动体验，通过开发专门的模组与玩家交互。
+<div style="text-align:center">
+<img src="./assets/logo_1.jpg" alt="DST-GPT-logo" width="200"/>
+<h2>🔥 GPT4DST</h2>
+</div>
+
+[![Github](https://img.shields.io/badge/GitHub-GPT4DST-000000?logo=github)](https://github.com/Bili-Sakura/GPT4DST)
+[![Bilibili](https://img.shields.io/badge/Bilibili-waiting-00A1D6?logo=bilibili&logoColor=white)]()
+[![Huggingface](https://img.shields.io/badge/Hugging%20Face-Waiting...-FF9900?logo=hugging%20face&logoColor=white)](https://huggingface.co/)
+
+> Preview Work: DST-GPT (https://github.com/Bili-Sakura/DSTGPT)
+> ![coverLogo](./assets/DST-GPT_framework_bg.png)
+
+## Introduction

@@ -1,0 +1,2 @@
+# GPT4DST
+GPT4DST是一个基于langchain库调用OpenAI的GPT闭源模型的LLM二次开发应用。该项目旨在为DST（饥荒联机版）游戏提供智能互动体验，通过开发专门的模组与玩家交互。
