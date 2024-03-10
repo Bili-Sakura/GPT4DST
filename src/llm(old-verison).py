@@ -7,7 +7,6 @@ import json
 import markdown2
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-from PyQt5.QtWidgets import QMessageBox
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.vectorstores import Chroma
 from langchain_community.callbacks import get_openai_callback, openai_info
@@ -16,7 +15,6 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.documents import Document
-from src.config import load_config, update_config, configUpdater
 
 
 class LLM:
