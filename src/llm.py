@@ -33,7 +33,7 @@ class LLM:
         """
         load_dotenv()  # Load environment variables from .env file
         self.api_key: str = os.getenv("OPENAI_API_KEY", "")
-        self.base_url: str = os.getenv("OPENAI_BASE_URL", "")
+        self.base_url: str = os.getenv("OPENAI_BASE_URL", "") or None
         self.base_model: str = base_model
         self.temperature: float = temperature
         self.prompt_template: str = prompt_template
