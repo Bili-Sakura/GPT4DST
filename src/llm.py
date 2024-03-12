@@ -78,7 +78,7 @@ class LLM:
         )
 
         # Supported file types
-        supported_types = [".txt", ".md", ".json"]
+        supported_types = [".txt", ".md", ".json", ".py", ".lua"]
 
         if os.path.exists(vectorstore_filepath):
             self.stored_vectors = Chroma(
@@ -126,7 +126,7 @@ class LLM:
         if file_extension == ".json":
             with open(file_path, "r", encoding="utf-8") as file:
                 return json.dumps(json.load(file))
-        else:  # For .txt, .md, and other text-based files
+        else:  # For .txt, .md, .py,  and .lua
             with open(file_path, "r", encoding="utf-8") as file:
                 return file.read()
 
