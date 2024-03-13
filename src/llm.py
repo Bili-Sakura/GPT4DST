@@ -31,7 +31,7 @@ class LLM:
             prompt_template (str): The template for creating prompts. Defaults to '{input}'.
             vectorstore_directory (str): The directory path for the vector store. Defaults to 'database'.
         """
-        load_dotenv()  # Load environment variables from .env file
+        load_dotenv(override=True)  # Load environment variables from .env file
         self.api_key: str = os.getenv("OPENAI_API_KEY", "")
         self.base_url: str = os.getenv("OPENAI_BASE_URL", "") or None
         self.base_model: str = base_model
