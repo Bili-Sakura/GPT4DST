@@ -8,42 +8,38 @@ from dst_wiki.items import DstWikiItem
 from urllib.parse import urlparse
 
 
-class FandomSpider(scrapy.Spider):
+class FandomSpider(CrawlSpider):
     name = "fandom"
     allowed_domains = ["dontstarve.fandom.com"]
-    start_urls = ["https://dontstarve.fandom.com/wiki/Don%27t_Starve_Together", "https://dontstarve.fandom.com/wiki/Don%27t_Starve"]
-    crawled_urls = set()
+    start_urls = ["https://dontstarve.fandom.com/wiki/Don%27t_Starve_Together", "https://dontstarve.fandom.com/wiki/Don%27t_Starve", "https://dontstarve.fandom.com/wiki/Don%27t_Starve_Wiki"]
 
+    # 这里用 dontstarve.fandom.com/wiki/ 而不是 /wiki/ 是为了只留下英语网页
+    # 在 fandom 中，其他语言，例如中文，url 的形式会是 dontstarve.fandom.com/zh/wiki/ 这样加在 /wiki/ 前面
     rules = (
-        Rule(
-            LinkExtractor(allow=('/wiki/',)), callback='parse', follow=True),
+        Rule(LinkExtractor(allow=(r'dontstarve.fandom.com/wiki/',), deny=('\?', 'file:', 'File:', 'Template:', 'Talk:', '#', 'Special:', 'Message_Wall:', 'User:', 'Help:',
+                    'User_blog:', 'Board_Thread:', 'Thread:', 'comment', 'Gallery')), callback='parse', follow=True),
     )
 
-    visited_urls = set()  # 假设这是全局的或者在类中定义的集合
+    # scrapy 自带去重，但是默认对 start_urls 里面的链接不去重
+    # 重写 start_requests 设置 dont_filter=False 以使用自带去重
+    def start_requests(self):
+        for url in self.start_urls:
+            yield scrapy.Request(url, dont_filter=False)
 
-    def parse(self, response, *args, **kwargs):
-        # 检查是否已经爬取过这个链接
-        if self.already_visited(response.url):
-            return
-
-        # 递归处理链接
-        for link in response.css('a::attr(href)').getall():
-            absolute_link = response.urljoin(link)
-            if not absolute_link.startswith("https://dontstarve.fandom.com/wiki/"):
-                continue
-            # 检查链接是否应该被丢弃
-            if any(discard in absolute_link for discard in
-                   ['?', 'File:', 'Template:', 'Talk:', '#', 'Special:', 'Message_Wall:', 'User:', 'Help:',
-                    'User_blog:', 'Board_Thread:', 'Thread:']):
-                continue
-            print("absolute link:", absolute_link)
-            # 递归跟进链接
-            # yield response.follow(absolute_link, self.parse)
-            yield scrapy.Request(absolute_link, callback=self.parse)
+    def parse(self, response):
+        print(response.url)
 
         # 提取文本内容并处理
         soup = BeautifulSoup(response.text, 'html.parser')
-        text = soup.get_text()
+        # 去掉所有的table标签
+        for table in soup.find_all('table'):
+            table.decompose()
+        # 只提取 class="page__main" 中的内容
+        page_main = soup.find(class_="page__main")
+        if page_main:
+            text = page_main.get_text()
+        else:
+            text = ""
         text = self.clean_text(text)
 
         # 提取文件名
@@ -56,35 +52,54 @@ class FandomSpider(scrapy.Spider):
         # 创建item并返回
         yield item
 
-    def already_visited(self, url):
-        # 这里可以实现去重逻辑，例如使用集合存储已经访问过的URLs
-        if url in self.visited_urls:
-            return True
-        self.visited_urls.add(url)
-        return False
-
     def clean_text(self, text):
         text = text.replace('\n', ' ').replace('\t', ' ')
         text = re.sub('\u200E', '', text)
         text = ' '.join(text.split())
-        # 去掉重复结尾
-        text = text.replace(
-            "Community content is available under CC-BY-SA unless otherwise noted. More Fandoms Fantasy Horror Don't Starve Advertisement Fan Feed More Don't Starve Wiki 1 Characters 2 Don't Starve Together 3 Crock Pot Explore properties Fandom Muthead Fanatical Follow Us Overview What is Fandom? About Careers Press Contact Terms of Use Privacy Policy Global Sitemap Local Sitemap Community Community Central Support Help Do Not Sell or Share My Personal Information Advertise Media Kit Contact Fandom Apps Take your favorite fandoms with you and never miss a beat. Don't Starve Wiki is a FANDOM Games Community. View Mobile Site Follow on IG TikTok Join Fan Lab",
-            "")
-        # 去掉重复开头
-        start_str = "| Don't Starve Wiki |"
-        end_str = "View history Talk (0)"
 
+        # 语言一共有 English Deutsch Español Français Italiano 日本語 Polski Português Русский Tiếng Việt 中文
+        # 除了 English 之外，其他语言名称都不太可能出现在正文中，直接去掉
+        language_list = ["Deutsch", "Español", "Français", "Italiano", "日本語", "Polski", 
+                         "Português", "Русский", "Tiếng", "Việt", "中文"]
+        for each_language in language_list:
+            text = text.replace(each_language, '')
+
+        # 去掉 < Guides 导航字段
+        text = text.replace('< Guides', '')
+
+        # 去掉 Edit Edit source View history Talk (0) 这个选项字段
+        start_str = "Edit Edit source"
+        end_str = ")"
+        text = self.delete_between(text, start_str, end_str)
+
+        # 去掉 View source View history Talk (0) 这个选项字段
+        start_str = "View source"
+        end_str = ")"
+        text = self.delete_between(text, start_str, end_str)
+
+        # 遇到了就删到结尾
+        del_till_end_list = [
+            "References[]", "Gameplay Mechanics", "Categories Categories:"
+        ]
+        for each in del_till_end_list:
+            text = self.delelte_till_end(text, each)
+
+        return text.strip()
+    
+    def delete_between(self, text, start_str, end_str):
         start_index = text.find(start_str)
         end_index = text.find(end_str) + len(end_str)
 
         if start_index != -1 and end_index != -1:
             modified_text = text[:start_index] + text[end_index:]
             text = modified_text
-        else:
-            # 起始字符串或结束字符串未找到
-            pass
-        return text.strip()
+        return text
+    
+    def delelte_till_end(self, text, start_str):
+        start_index = text.find(start_str)
+        if start_index != -1:
+            text = text[:start_index]
+        return text
 
 
 
