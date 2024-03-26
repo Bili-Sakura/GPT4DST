@@ -1,7 +1,8 @@
 ### sakura defined
-data/
-database/
-
+.vscode
+data
+database
+presentation
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
