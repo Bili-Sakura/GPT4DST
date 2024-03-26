@@ -5,7 +5,9 @@
   ],
   "markdownlint.config": {
     "MD033": false,
-    "MD025": false
+    "MD025": false,
+    "MD036": false,
+    "MD007": false
   },
   "editor.formatOnSave": true,
   "[python]": {
