@@ -25,7 +25,7 @@ marp: true
 
 > Ref: [【Paper】K2: A Foundation Language Model for Geoscience Knowledge Understanding and Utilization](https://arxiv.org/abs/2306.05064)
 
-![Overview](../assets/K2_Overview.png)
+![Overview](./assets/K2.png)
 
 **Two Steps of Constructing K2:**
 Fine-Tuning(right) | Further Pretraining(left)
