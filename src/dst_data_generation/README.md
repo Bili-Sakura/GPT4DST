@@ -1,3 +1,7 @@
+---
+marp: true
+---
+
 # DST Knowledge Generation from Source Codes
 
 ---
@@ -24,6 +28,9 @@
 - Mechenism(description text)
     - Freezing
     - ...
+
+---
+
 - Characters(solid data)
 - Map(solid data)
     > Ref: [【专栏】破解饥荒联机版地形之谜——从代码角度带你读懂饥荒](https://www.bilibili.com/read/cv25349359/) | [【视频】破解饥荒联机版地形之谜——从代码角度带你读懂饥荒](https://www.bilibili.com/video/BV1QV411V7bN)
@@ -61,6 +68,8 @@
 > Evaluate part results and let LLM correct it self.
 
 **Question:Is it able to do with OpenAI API, or we need deploy an open-source LLM?**
+
+---
 
 ![LLM_Survey_RLHF](./assets/LLM_Survey_RLHF.png)
 
