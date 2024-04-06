@@ -1,3 +1,5 @@
+# GPT4DST: Interact with AI Pro-Gamer in Don't Starve Together
+
 <div style="text-align:center">
 <img src="./assets/logo_1.jpg" alt="DST-GPT-logo" width="200"/>
 <h2>🔥 GPT4DST</h2>
@@ -8,10 +10,77 @@
 [![Github](https://img.shields.io/badge/GitHub-GPT4DST-000000?logo=github)](https://github.com/Bili-Sakura/GPT4DST)
 [![Bilibili](https://img.shields.io/badge/Bilibili-waiting...-00A1D6?logo=bilibili&logoColor=white)](https://bilibili.com)
 
-
-> Preview Work: DST-GPT (https://github.com/Bili-Sakura/DSTGPT)
-> ![coverLogo](./assets/DST-GPT_framework_bg.png)
-
 ## Introduction
 
-waiting...
+GPT4DST is a secondary development application based on the langchain library calling OpenAI's large language model. The project aims to provide an intelligent interactive experience for the Don't Starve Together (DST) game by developing specialized mods to interact with players.
+
+## Quick Start
+
+## Data
+
+### ~~Further Pretrain Data~~
+
+### ~~Instruction Tuning: DSTSignal~~
+
+### ~~Benchmark: DSTBench~~
+
+## Code
+
+### ~~Further Pretrain Configurations~~
+
+### ~~Fine-Tuning~~
+
+## Cases
+
+## Evaluation
+
+## Contributors
+
+## Acknowledgements
+
+## License
+
+## Citation
+
+## Developer Notes
+
+DATA COLLECTION AND CURATION
+
+- [] Collect `Raw DST Knowledge` from Wiki Fandom using API
+- [] Clean `Raw DST Knowledge` into `Formatted DST Knowledge`/`Structured DST Knowledge`
+- [] Construct pipeline for creating `DSTSignal`/`DSTBench`
+
+LLM DOMAIN SPECIFIED USING RAG
+
+- [] Consolidate `DST Knowledge` into vectorstore using `Chroma`/`Milvus`/...
+- [] Implement RAG to enhance LLM capabilities using `langchain`/`llamaindex`/...
+- [] Implement adavanced RAG techniques
+
+DEPLOYMENT WITH WEBPAGES
+
+- [] Deployment project using `Vue`/`React`/`Streamlit`
+
+DEPLOYMENT WITH API
+
+- [] Deployment project using `FASTAPI`
+
+INTERACTION WITH ENVIRONMENT USING AGENT
+
+- [] Import llm modules into the DST mod
+- [] Achieve simple QA in DST
+
+## Outline of Scientific Writing
+
+> Paper Title:
+
+INTRODUCTION
+
+RELATED WORK
+
+DATA COLLECTION AND CURATION
+
+CASES STUDY
+
+EVALUATION AND RESULTS
+
+CONCLUSION
