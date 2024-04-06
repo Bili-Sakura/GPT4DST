@@ -72,3 +72,5 @@ CONCLUSION
 - Create Pipeline of covernting codes to QA-Pairs(@Sakura)
 - Survey and practise on more RAG techniques(@If @Xinle)
 - Deployment project with FastAPI(@Alan)
+
+![demo](./assets/drawio_demo.png)
