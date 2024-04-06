@@ -71,13 +71,36 @@ INTERACTION WITH ENVIRONMENT USING AGENT
 
 ## Outline of Scientific Writing
 
-> Paper Title:
+> Paper Title: DST-Agent: Intelligent Game Playing Guidance by Empowering Large Language Models with Environment Interaction  
+> Abstract: ...  
+> Main Contributions: DSTBench & DSTSignal ; Reinforcement Learning for Environment Interaction ; Integrating in Game
 
-INTRODUCTION
+INTRODUCTION & RELATED WORK
 
-RELATED WORK
+- Introduction to LLMs
+  - [A Survey of Large Language Models](https://arxiv.org/abs/2303.18223)
+- Knowledge Injection
+  - [Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs](https://arxiv.org/abs/2312.05934)
+  - [Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/abs/2312.10997)
+- Game Playing Agent
+  - [A Survey on Game Playing Agents](https://arxiv.org/abs/2403.10249)
+  - [PokeLLMon: A Human-Parity Agent for Pokemon Battles with Large Language](https://arxiv.org/abs/2402.01118)
+  - [SPRING: Studying the Paper and Reasoning to Play Games](https://arxiv.org/abs/2305.15486)
 
 DATA COLLECTION AND CURATION
+
+- Pipeline of DSTSignal & DSTBench
+
+KNOWLEDGE INJECTION
+
+- Retrival-Augmented Generation(RAG)
+- Chain of Thought (COT)/Tree of Thought(TOT)/Chain of Abstraction(COA)
+
+REINFORCEMENT LEARNING FOR ENVIRONMENT INTERACTION
+
+AGENT
+
+- Reasoning and Act(ReACT)
 
 CASES STUDY
 
