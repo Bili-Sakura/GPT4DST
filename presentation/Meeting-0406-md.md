@@ -1,22 +1,20 @@
+---
+marp: true
+---
+
 # GPT4DST: Interact with AI Pro-Gamer in Don't Starve Together
 
-<div style="text-align:center">
-<img src="./assets/logo_1.jpg" alt="DST-GPT-logo" width="200"/>
-<h2>🔥 GPT4DST</h2>
-</div>
+![logo](../assets/logo_1.jpg)
 
-[English](README.md) | [中文](README_CN.md)
-
-[![Github](https://img.shields.io/badge/GitHub-GPT4DST-000000?logo=github)](https://github.com/Bili-Sakura/GPT4DST)
-[![Bilibili](https://img.shields.io/badge/Bilibili-waiting...-00A1D6?logo=bilibili&logoColor=white)](https://bilibili.com)
+---
 
 ## Introduction
 
 GPT4DST is a secondary development application based on the langchain library calling OpenAI's large language model. The project aims to provide an intelligent interactive experience for the Don't Starve Together (DST) game by developing specialized mods to interact with players.
 
-## Quick Start
-
 ---
+
+## Quick Start
 
 ## Data
 
@@ -31,6 +29,8 @@ GPT4DST is a secondary development application based on the langchain library ca
 ### ~~Further Pretrain Configurations~~
 
 ### ~~Fine-Tuning~~
+
+---
 
 ## Cases
 
@@ -58,8 +58,9 @@ LLM DOMAIN SPECIFIED USING RAG
 
 - [ ] Consolidate `DST Knowledge` into vectorstore using `Chroma`/`Milvus`/...
 - [ ] Implement RAG to enhance LLM capabilities using `langchain`/`llamaindex`/...
-- [ ] Implement adavanced RAG techniques (Create Q-A Pairs with SOTA Languange Model)
-- [ ] Real-Time Updates (Ref to ChatOllama Project) (Scripts Update Timely)
+- [ ] Implement adavanced RAG techniques
+
+---
 
 DEPLOYMENT WITH WEBPAGES
 
@@ -80,7 +81,9 @@ INTERACTION WITH ENVIRONMENT USING AGENT
 
 > Paper Title: DST-Agent: Intelligent Game Playing Guidance by Empowering Large Language Models with Environment Interaction  
 > Abstract: ...  
-> Main Contributions: DSTBench & DSTSignal ; Deep Integration in Game as Workshop Mods
+> Main Contributions: DSTBench & DSTSignal ; Reinforcement Learning for Environment Interaction ; Integrating in Game
+
+---
 
 INTRODUCTION & RELATED WORK
 
@@ -94,6 +97,8 @@ INTRODUCTION & RELATED WORK
   - [PokeLLMon: A Human-Parity Agent for Pokemon Battles with Large Language](https://arxiv.org/abs/2402.01118)
   - [SPRING: Studying the Paper and Reasoning to Play Games](https://arxiv.org/abs/2305.15486)
 
+---
+
 DATA COLLECTION AND CURATION
 
 - Pipeline of DSTSignal & DSTBench
@@ -104,6 +109,8 @@ KNOWLEDGE INJECTION
 - Chain of Thought (COT)/Tree of Thought(TOT)/Chain of Abstraction(COA)
 
 REINFORCEMENT LEARNING FOR ENVIRONMENT INTERACTION
+
+---
 
 AGENT
 
