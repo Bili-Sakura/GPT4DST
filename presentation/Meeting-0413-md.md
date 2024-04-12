@@ -2,9 +2,16 @@
 marp: true
 ---
 
-# [SPRING: Studying the Paper and Reasoning to Play Games](https://arxiv.org/abs/2305.15486) (NeurIPS2023)
+# GPT4DST Meeting
 
-> GitHub: https://github.com/holmeswww/spring
+- Topic: Paper Reading & Paper Discussion
+- Date: 2024.04.13(Sat.)
+
+---
+
+## [SPRING: Studying the Paper and Reasoning to Play Games](https://arxiv.org/abs/2305.15486) (NeurIPS2023)
+
+> GitHub: <https://github.com/holmeswww/spring>
 
 ![SPRING: Studying the Paper and Reasoning to Play Games](./assets/SPRING/Arvix.png)
 
@@ -82,13 +89,38 @@ Open-world survival games: Minecraft ([Fan et al., 2022](https://arxiv.org/abs/2
 
 ### Paper (Core References)
 
-[Benchmarking the Spectrum of Agent Capabilities](https://arxiv.org/abs/2109.06780)
+> First Author: Danijar Hafner (Google Researcher/DeepMind)
 
-[Mastering Atari with Discrete World Models](https://arxiv.org/abs/2010.02193)
+[Mastering Atari with Discrete World Models](https://arxiv.org/abs/2010.02193) (ICLR2021)
 
-[Mastering Diverse Domains through World Models](https://arxiv.org/abs/2301.04104)
+[Benchmarking the Spectrum of Agent Capabilities](https://arxiv.org/abs/2109.06780) (ICLR2022)
+
+[Mastering Diverse Domains through World Models](https://arxiv.org/abs/2301.04104) (Arvix2023)
 
 ### Code
 
-SmartPlay: https://github.com/microsoft/SmartPlay
+SmartPlay: <https://github.com/microsoft/SmartPlay>
 > SmartPlay is a `benchmark` for Large Language Models (LLMs). Uses a variety of games to test various important LLM capabilities as agents. SmartPlay is designed to be easy to use, and to support future development of LLMs.
+
+---
+
+## Take-Home Notes
+
+1. Agent + Knowledge > Reinforcement Learning
+2. GPT-4 outperforms other foundation models in reasoning.
+3. High quality corpus of domain-specified knowledge is demanded.
+4. Compared to previous works on open-world survival game playing agents such as `Minecraft`/`Crafter`/`...`, we are the **pioneers** who implement LLM/Agent on `Don't Starve Together(DST)`. Moreover, `DST` seems to be the only survival game whose environmental variables is available for researchers/developers.
+
+---
+
+## Conception of Our Paper
+
+### DST-Agent: Perception-Based Agent in a Difficult Survival Game
+
+> **Perception** + Inference + Action Execution (Loop/Cycle/Iteration)
+
+---
+
+### Abstract (demo ver.)
+
+Open-world survival games pose significant challenges for AI algorithms. Current works use vision-language models to understand and interact with environment, which demands high computational resources. Don't Starve Together(DST) is a develop-free open world survival game, where environmental variables is available for mod developer. Given the convenience of DST, We propose DST-Agent, an agent whose instruction is deeply integrated with game environment variables by deploying it as an in-game workshop mod. Our DST-Agent framework employs a directed acyclic graph (DAG) with game-related questions as nodes and dependencies as edges. We identify the optimal action to take in the environment by traversing the DAG and calculating LLM responses for each node in topological order, with the LLM’s answer to final node directly translating to environment actions. Our experiments suggest that LLMs, when prompted with consistent chain-of-thought, have great potential in completing sophisticated high-level trajectories.Quantitatively, DST-Agent with GPT-4 outperforms all state-of-the-art RL baselines, trained for 1M steps, without any training. 
