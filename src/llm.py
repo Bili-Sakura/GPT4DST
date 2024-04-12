@@ -31,9 +31,9 @@ class LLM:
             prompt_template (str): The template for creating prompts. Defaults to '{input}'.
             vectorstore_directory (str): The directory path for the vector store. Defaults to 'database'.
         """
-        load_dotenv()  # Load environment variables from .env file
+        load_dotenv(override=True)  # Load environment variables from .env file
         self.api_key: str = os.getenv("OPENAI_API_KEY", "")
-        self.base_url: str = os.getenv("OPENAI_BASE_URL", "")
+        self.base_url: str = os.getenv("OPENAI_BASE_URL", "") or None
         self.base_model: str = base_model
         self.temperature: float = temperature
         self.prompt_template: str = prompt_template
@@ -78,7 +78,7 @@ class LLM:
         )
 
         # Supported file types
-        supported_types = [".txt", ".md", ".json"]
+        supported_types = [".txt", ".md", ".json", ".py", ".lua"]
 
         if os.path.exists(vectorstore_filepath):
             self.stored_vectors = Chroma(
@@ -126,7 +126,7 @@ class LLM:
         if file_extension == ".json":
             with open(file_path, "r", encoding="utf-8") as file:
                 return json.dumps(json.load(file))
-        else:  # For .txt, .md, and other text-based files
+        else:  # For .txt, .md, .py,  and .lua
             with open(file_path, "r", encoding="utf-8") as file:
                 return file.read()
 
