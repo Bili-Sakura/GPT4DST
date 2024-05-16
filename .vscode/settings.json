@@ -14,5 +14,11 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "cSpell.words": ["Arvix"]
+  "cSpell.words": [
+    "Arvix",
+    "Arxiv",
+    "CUHK",
+    "CVPR",
+    "pretraining"
+  ]
 }
